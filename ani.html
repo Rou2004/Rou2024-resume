@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hover Animation</title>
+<style>
+    .pro-python {
+        text-align: left;
+        margin-right: 10px;
+        margin-left: 10px;
+        border-right-style: solid;
+        border-radius: 20px;
+        border-right-color: #de9a85;
+        border-right-width: 400px; /* 將初始邊框寬度設置為400px */
+        transition: border-right-width 2s ease-out; /* 使用過渡效果代替動畫 */
+    }
+
+    .pro-python:hover {
+        border-right-width: 0px; /* 滑鼠懸停時，將邊框寬度設置為0px */
+    }
+</style>
+</head>
+    <body>
+
+        <div class="pro-python">
+            <p>test</p>
+        </div>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                var proPython = document.querySelector('.pro-python');
+
+                proPython.addEventListener('mouseenter', function() {
+                    // 將邊框寬度設置為0，並稍後設置回400px，從而觸發動畫
+                    this.style.borderRightWidth = '0px';
+                    setTimeout(function() {
+                        proPython.style.borderRightWidth = '400px';
+                    }, 10); // 在10毫秒後設置回400px，觸發動畫
+                });
+            });
+        </script>
+
+    </body>
+</html>

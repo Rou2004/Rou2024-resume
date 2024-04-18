@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guestbook</title>
+<link rel="stylesheet" href="mess.css">
+</head>
+<body>
+
+<div class="container">
+    <h1>留言！</h1>
+    <form id="guestbookForm">
+        <label for="name">你是誰：</label>
+        <input type="text" id="name" name="name" required>
+        <label for="message">想講的話：</label>
+        <textarea id="message" name="message" rows="4" required></textarea>
+        <input type="submit" value="Submit">
+    </form>
+    <div class="message" id="messageContainer"></div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const guestbookForm = document.getElementById('guestbookForm');
+    const messageContainer = document.getElementById('messageContainer');
+
+    guestbookForm.addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        const name = this.elements['name'].value;
+        const message = this.elements['message'].value;
+
+        if (name.trim() === '' || message.trim() === '') {
+            alert('Please fill in all fields.');
+            return;
+        }
+
+        const messageElement = document.createElement('div');
+        messageElement.innerHTML = `<p><strong>${name}:</strong> ${message}</p>`;
+        messageContainer.appendChild(messageElement);
+
+        this.reset();
+    });
+});
+</script>
+
+</body>
+</html>
